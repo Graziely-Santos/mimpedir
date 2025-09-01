@@ -18,21 +18,22 @@ class TelaLogin extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tela de login: ')),
+      appBar: AppBar(title: const Text('Tela de login')),
       body: Padding(padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              decoration: const InputDecoration(labelText: 'usuario'),
+              decoration: const InputDecoration(labelText: 'Usuário'),
               controller: usuarioController,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
             TextField(
               decoration: const InputDecoration(labelText: 'Senha'),
+              obscureText: true,
               controller: senhaController,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
             ElevatedButton(onPressed: () async {
 
           /*if(u.login == usuarioController.text && u.senha == senhaController.text){
@@ -52,11 +53,11 @@ class TelaLogin extends StatelessWidget{
             );
           }else{
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Login invalido!'))
+              SnackBar(content: Text('Login ou senha invalidos!!'))
             );
           }
 
-            }, child: const Text('Entrar')),
+            }, child: Text('Login')),
 
 
           ],
