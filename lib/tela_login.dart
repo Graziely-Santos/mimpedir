@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mimpedir/tela_home.dart';
-import 'package:mimpedir/usuario.dart';
+import 'usuario.dart';
+import 'tela_home.dart';
 import 'banco/usuario_dao.dart';
 
 class TelaLogin extends StatelessWidget{
@@ -18,7 +18,7 @@ class TelaLogin extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tela de login')),
+      appBar: AppBar(title: const Text("Tela de login")),
       body: Padding(padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,17 +51,15 @@ class TelaLogin extends StatelessWidget{
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) =>  TelaHome())
             );
-          }else{
+            }else{
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Login ou senha invalidos!!'))
+              SnackBar(content: Text("Login ou senha invalidos!!"))
             );
           }
 
-            }, child: Text('Login')),
-
-
+            }, child: Text("Login"))
           ],
-        )
+        ),
       ),
     );
   }
