@@ -22,9 +22,27 @@ class TelaCadRestaurante extends StatelessWidget{
                ],
                  onChanged: (value){}),
              TextFormField(
-               decoration: const InputDecoration()
-             )
-          ],
+               decoration: const InputDecoration(hintText: 'Nome do Restaurante'),
+               validator: (String? value) {},
+             ),
+             TextFormField(
+               decoration: const InputDecoration(hintText: 'latitude'),
+               validator: (String? value) {},
+             ),
+             TextFormField(
+               decoration: const InputDecoration(hintText: 'longitude'),
+               validator: (String? value) {},
+             ),
+             SizedBox(height: 50),
+             ElevatedButton(onPressed: (){}, child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+                   Icon(Icons.save),
+                   Text("Cadrastrar")
+                 ],
+             ),
+             ),
+           ],
          ),
       ),
     );

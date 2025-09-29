@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
-  static final _nomeBanco = 'Solucao_Completo.db';
+  static final _nomeBanco = 'Solucao_Completa.db';
   static Database? _db;
 
   static Future<Database> getDataBase() async{
