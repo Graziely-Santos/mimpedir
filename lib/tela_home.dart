@@ -31,11 +31,20 @@ class TelaHomeState extends State<TelaHome>{
        appBar: AppBar(
            title: const Text("Lista de Restaurantes "),
            actions: [
-             IconButton(
-                 onPressed: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => TelaCadRestaurante()));
+             TextButton(onPressed: () async{
+                   final t = await Navigator.push(context,
+                       MaterialPageRoute(builder: (context) => TelaCadRestaurante())
+                   );
+
+                   if(t == false || t == null){
+
+                     setState(() {
+                       carregarRestaurantes();
+                     });
+                   }
+
                  },
-                 icon: Icon(Icons.add)
+                 child: Icon(Icons.add)
              )
            ],
        ),
