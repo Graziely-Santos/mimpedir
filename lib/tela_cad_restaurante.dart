@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mimpedir/banco/tipo_DAO.dart';
+import 'package:mimpedir/restaurante.dart';
 
 import 'tipo.dart';
 
 class TelaCadRestaurante extends StatefulWidget {
+const TelaCadRestaurante({super.key});
+
+static Restaurante restaurante = Restaurante();
 
   @override
   State<StatefulWidget> createState() {
@@ -23,6 +27,9 @@ class TelaCadRestauranteState extends State<TelaCadRestaurante>{
   void initState(){
     super.initState();
     carregarTipos();
+
+    tipoCulinaria = TelaCadRestaurante.restaurante.tipoCulinaria?.codigo!;
+    culinariariaSelecionada = TelaCadRestaurante.restaurante.tipoCulinaria?.nome!;
   }
 
   Future<void> caaregarTipos() async{
@@ -44,22 +51,19 @@ class TelaCadRestauranteState extends State<TelaCadRestaurante>{
              Text("Informações do Restaurante: "),
              SizedBox(height: 40),
              Text("Tipo de comida: "),
-             DropdownButtonFormField<String>(
-                 value: culinariariaSelecionada,
-                 items: tiposCulinaria.map((tipo){
-                   return DropdownMenuItem<String?>(
-                     value: tipo.descricao,
-                     child: Text("${tipo.descricao}"),
+             DropdownButtonFormField<String>(value: culinariariaSelecionada, items: tiposCulinaria.map((tipo) {
+                   return DropdownMenuItem<String?>(value: tipo.descricao, child: Text("${tipo.descricao}"),
                    );
              }).toList(),
-                  onChanged: (String? value){
+
+                  onChanged: (String? novaCulinaria){
                    setState(() {
-                     culinariariaSelecionada = value;
+                     culinariariaSelecionada = novaCulinaria;
                      Tipo tipoSelecionado = tiposCulinaria.firstWhere(
-                         (tipo) => tipo.nome == value,
+                         (tipo) => tipo.nome == novaCulinaria,
                      );
                      //capturado codigo ou nome de tipo??
-                     TipoCulinaria = TipoSelecionada.codigo ; //vamos ver
+                     tipoCulinaria = tipoSelecionado.codigo; //vamos ver
                    });
                   }
               ),
